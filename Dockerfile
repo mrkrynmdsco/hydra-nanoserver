@@ -1,5 +1,5 @@
 # escape= `
-FROM microsoft/windowsservercore:1909 AS miniconda
+FROM mcr.microsoft.com/windows/servercore:1909 AS miniconda
 
 WORKDIR /tmp
 
@@ -9,7 +9,7 @@ RUN powershell Unblock-File Miniconda3.exe
 
 RUN Miniconda3.exe /InstallationType=JustMe /RegisterPython=1 /S /D=C:\Miniconda3
 
-FROM microsoft/nanoserver:1909
+FROM mcr.microsoft.com/windows/nanoserver:1909
 
 COPY --from=miniconda C:\Miniconda3 C:\Tools\miniconda
 
